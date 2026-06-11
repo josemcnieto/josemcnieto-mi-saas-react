@@ -1,22 +1,18 @@
-//componente principal: App
-//1.Importamos la hoja de estilos App.css
 import './App.css';
-//2. Importamos las dos grandes mitades de nuestra pantalla
 import Sidebar from './Sidebar';
 import ChatArea from './ChatArea';
-function App(){
-  return(
-    //contenedor principal que usa flexbox(definido en el App.css)
-    //para poner las cosas lado a lado
+
+function App() {
+  return (
+    // Contenedor principal que usa flexbox para poner las dos columnas lado a lado
     <div className='app-container'>
-      {/*Inyectamos la mitad izquierda a la pantalla*/}
+      {/* Inyectamos la mitad izquierda (Menú de excavación) */}
       <Sidebar />
-      {/*Inyectamos la mitad derecha de la pantalla*/}
-     <ChatArea />
       
+      {/* Inyectamos la mitad derecha (Zona del oráculo/chat) */}
+      <ChatArea />
     </div>
-  )
+  );
 }
 
-export default App
-
+export default App;

@@ -1,250 +1,201 @@
-/* CSS PROYECTO SAAS */
-/* 1.RESETEO Y BASES */
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+:root {
+  --fondo-papiro: #f4ecd8;
+  --arena-oscura: #e4d5b7;
+  --azul-lapislazuli: #1d4ed8; 
+  --oro-egipcio: #cca43b;
+  --texto-carbon: #2b261f;
 }
 
-/* 2.LAYOUT PRINCIPAL (Flexbox)  */
-.app-container{
-    display: flex;  /*Ponemos Sidebar y chat en fila*/
-    height:100vh; /*Ocupar el 100% de la altura de la ventana*/
-    overflow: hidden; /*Evita que la web entera haga scroll*/ 
-
+/* Estructura General Layout (Flexbox) */
+.app-container {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  background-color: var(--fondo-papiro);
+  color: var(--texto-carbon);
+  margin: 0;
+  font-family: system-ui, -apple-system, sans-serif;
 }
 
-/* 3.SIDEBAR(Barra lateral) */
-.sidebar{
-    width: 260px; /*Ancho fijo para el menu*/
-    background-color: #202123;/*Color oscuro tipo CHATGPT*/
-    color: white;
-    display: flex;
-    flex-direction: column; /*Los elementos del menu van*/
-    justify-content: space-between;  /*Logo arriba,perfil abajo*/
-    padding: 15px;
+/* Estilos de la Barra Lateral */
+.sidebar {
+  width: 260px;
+  background-color: var(--arena-oscura);
+  border-right: 3px double var(--oro-egipcio);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
 }
 
-.menu-lateral button{
-    width: 100%;
-    padding: 12px;
-    background: transparent;
-    border: 1px solid #4d4d4f;
-    color: white;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-bottom: 20px;
+.logo-area h2 {
+  color: var(--oro-egipcio);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 0;
+}
+
+.menu-lateral button {
+  width: 100%;
+  padding: 12px;
+  background-color: transparent;
+  color: var(--texto-carbon);
+  border: 2px dashed var(--oro-egipcio);
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.menu-lateral button:hover {
+  background-color: var(--oro-egipcio);
+  color: white;
+  border-style: solid;
+}
+
+.historial {
+  margin-top: 30px;
+}
+
+.historial p {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  color: #7c6a46;
+  letter-spacing: 1px;
 }
 
 .historial ul {
-    margin: 10px;
-    padding-left: 20px;
-} 
+  list-style: none;
+  padding: 0;
+}
 
 .historial li {
-    margin-bottom: 8px;
+  padding: 8px 10px;
+  margin-bottom: 5px;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
 }
 
-/* 4.AREA DE CHAT (Zona Central) */
-.chat-area{
-    flex-grow: 1;   /*ocupa todo el espacio restante de la pantalla*/
-    display: flex;
-    flex-direction: column; /*Cabecera arriba , mensajes centro , input abajo*/
-    background-color: #343541;
-}
-.chat-header{
-    padding: 15px;
-    border-bottom: 1px solid#4d4d4f;
-    color:#ececf1;
-    text-align: center;
-}
-.controles-filtro {
-    text-align: center;
-    padding: 10px;
-    background-color: #202123;
-    border-bottom:  1px  solid  #4d4d4f;
-
-}
-.controles-filtro button{
-    background: #444654;
-    color: white;
-    border: 1px  solid   #565869;
-    padding: 8px  15px;
-    margin: 0  5px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: 0.3s;
-
-}
-.controles-filtro button :hover{
-    background-color: #565869;
-  
+.historial li:hover {
+  background-color: rgba(255, 255, 255, 0.6);
 }
 
-/* modificamos el mensajes-container
--mensajes uno debajo del otro
--scroll vertical
--simulacion real de chat
- */
-
-.mensajes-container{
-    flex-grow: 1; /*Mensajes ocupan el centro*/
-    padding: 20px  40px;
-    display: flex;
-    /* se agrega el flex-direction : column por ser chat */
-    flex-direction: column;
-    /* flex-start: colocar elementos al inicio del contenedor */
-    justify-content: flex-start; 
-    /*strech los elementos ocupan el ancho disponible*/
-    align-items: stretch;
-    overflow-y: auto;
+.perfil {
+  border-top: 1px solid var(--oro-egipcio);
+  padding-top: 15px;
+  font-weight: bold;
+  color: #7c6a46;
 }
 
-/* burbujas */
-.msg-usuario, .msg-ia{
-    padding: 15px;
-    border-radius: 10px;
-    margin-bottom: 15px;
-    max-width: 80%;
-    width: fit-content;
-    line-height: 1.5;
-    transition: all  0.3s  ease;
+/* Zona del Chat Principal */
+.chat-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  /* Efecto cuadrícula sutil que simula textura */
+  background-image: radial-gradient(#e4d5b7 1px, transparent 0);
+  background-size: 24px 24px;
 }
-/* la burbuja de usuario se alinea a la derecha */
+
+.mensajes-container {
+  flex: 1;
+  padding: 30px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Mensajes individuales */
 .msg-usuario {
-    background-color: #19c37d;
-    color: white;
-    align-self: flex-end;
-}
-/* se alinea a la izquierda */
-.msg-ia{
-    background-color: #444654;
-    color: #d1d1d1;
-    align-self: flex-start;
+  align-self: flex-end;
+  background-color: #e2f0d9; /* Tono papiro verdoso suave */
+  padding: 15px;
+  border-radius: 12px 12px 0px
 }
 
 
-/*5.FORMULARIO DE ENTRADA(input)*/
-.input-area{
-    padding: 20px 40px;
+/* ultimos botones de input y enviar */
+/* ==========================================
+   🏺 INPUT Y BOTÓN ESTILO EXPENDICIÓN
+   ========================================== */
 
-}
-
-.chat-form{
-    max-width: 700px;
-    margin: 0 auto;/*Centra el formulario en el medio*/
-    display: flex; /*ekl input y el botton en fila*/
-    background-color: #40414f;
-    padding: 10px;
-    border-radius: 8px;
-    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+.input-area {
+  padding: 20px;
+  background-color: transparent;
 }
 
-.chat-form input{
-    flex-grow: 1; /*El input estira todo lo que puede*/
-    background-color: transparent;
-    border: none;/*Sin borde*/ 
-    color: white;
-    padding: 10px ;
-    outline: none; /*Quita el borde azul al hacer click*/ 
-    font-size: 1rem;
-}
-.chat-form button{
-    background-color: #19c37d;
-    color: white;
-    border: none;
-    padding: 5px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: 0.3s;
-}
-.chat-form button :hover{
-    opacity: 0.9;
+.chat-form {
+  display: flex;
+  gap: 12px;
+  max-width: 900px;
+  margin: 0 auto;
+  width: 100%;
+  align-items: center;
 }
 
-/* sr-only oculta sin eliminarlo dd html */
-.sr-only {
-    position: absolute;
-    left:  -9999px;
-}
-/*boton peligro(borrar)*/
-.controles-filtro .btn-peligro{
-    background-color: #e74c3c;
-    border:  1px solid  #c0392b;
-}
-.controles-filtro .btn-peligro :hover{
-    background-color: #c0392b;
-}
-/*boton buscador*/
-.buscador-container{
-    text-align: center;
-    padding: 10px;
-    background-color:  #202123;
-    border-bottom: 1px  solid  #4d4d4f;
+/* El cuadro de texto (Input) */
+#mensaje-input {
+  flex: 1;
+  padding: 15px 20px;
+  /* Fondo color pergamino claro, sutilmente translúcido */
+  background-color: rgba(255, 252, 243, 0.9); 
+  /* Borde color arena oscura */
+  border: 2px solid #d4c29d; 
+  border-radius: 6px;
+  color: var(--texto-carbon);
+  font-size: 1rem;
+  outline: none;
+  font-family: inherit;
+  box-shadow: inset 1px 1px 4px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
 }
 
-.buscador-container input{
-    padding: 8px 15px;
-    border-radius: 4px;
-    border: none;
-    width: 60%;
-    max-width: 400px;
-    outline: none;
-    font-size: 0.95rem;
-
-}
-.buscador-container button{
-    background-color: #19c37d;
-    color: white;
-    border: none;
-    padding: 8px 15px;
-    margin-left: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: 0.3s;
-
+/* Efecto cuando haces clic para escribir */
+#mensaje-input:focus {
+  background-color: #fff;
+  /* El borde se ilumina en oro egipcio */
+  border-color: var(--oro-egipcio); 
+  /* Sombra perimetral dorada muy suave */
+  box-shadow: 0 0 8px rgba(204, 164, 59, 0.4), inset 1px 1px 2px rgba(0, 0, 0, 0.05);
 }
 
-/* MAGIA RESPONSIVE - ADAPTANDO EL CHAT A MOVILES */
-/* Si la pantalla es de tamaño tablet o movil (menos de 768px) */
-
-@media (max-width: 768px) {
-    /*Ocultamos menu lateral*/
-    .sidebar{
-        /* Hace que la barra desaparezca */
-        display: none;
-    }
-    /* 2. Damos mas espacio al texto del chat */
-    .mensajes-container{
-        /* Reducir el padding */
-        padding: 20px;
-    }
-    /* 3. Ajustamos el formulario para que quepa bien en pantallas estrechas */
-    .input-area{
-        padding: 15px;
-
-    }
-    .chat-form{
-         padding: 5px;
-    }
-    .chat-form input {
-        font-size: 0.9rem; /*letra mas pequeña*/
-    }
-    .chat-form button{
-        padding: 8px 12px; /*boton mas compacto*/
-    }
+/* Cambiar el color del texto de sugerencia (placeholder) */
+#mensaje-input::placeholder {
+  color: #a89670;
+  font-style: italic;
+  opacity: 0.8;
 }
 
-@media (max-width:480px){
-    .chat-header h3 {
-        font-size: 1.1rem ;  /*achicamos el titulo superior*/
-    }
-    
-    .msg-usuario, .msg-ia{
-        max-width: 90%;
-        font-size: 0.95rem;
-        
-    }
+/* El botón de enviar */
+.chat-form button {
+  padding: 15px 30px;
+  background-color: var(--oro-egipcio);
+  color: #ffffff;
+  /* Borde doble fino que recuerda a los grabados en piedra */
+  border: 1px solid #b38f32;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+}
+
+/* Efecto cuando pasas el ratón por encima del botón */
+.chat-form button:hover {
+  background-color: var(--azul-lapislazuli); /* ¡Cambia al azul real de los faraones! */
+  border-color: #133ba3;
+  transform: translateY(-2px); /* Pequeño salto hacia arriba */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Efecto cuando haces clic en el botón */
+.chat-form button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }

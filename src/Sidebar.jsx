@@ -1,29 +1,25 @@
-//componete: Sidebar (Menu Lateral)
 function Sidebar() {
-    //Este componentte no tienedd logica compleja,
-    //solo devuelve la estructura visual
-    return (
-        //Recuerda: Convertimos el <aside class="sidebar">
-        //del viejo HTML a className
-        <aside className="sidebar">
-            <div className="logo-area">
-                <h2>IA Master</h2                >
-            </div>
-            <nav className="menu-lateral">
-                <button>+ Nuevo Chat</button>
-                <div className="historial">
-                    <p>Historial reciente...</p>
-                    <ul>
-                        <li>¿Como hacer dieta?</li>
-                        <li>Receta de pizza</li>
-                    </ul>                                          
-                 </div>
-            </nav>
+  return (
+    <aside className="sidebar">
+      <div className="logo-area">
+        <h2>Egipto IA</h2>
+      </div>
+      <nav className="menu-lateral">
+        <button>+ Nueva Excavación</button>
+        <div className="historial">
+          <p>Cámaras descubiertas...</p>
+          <ul>
+            <li>Valle de los Reyes</li>
+            <li>Jeroglíficos de Saqqara</li>
+          </ul>                                                    
+         </div>
+      </nav>
 
-            <div className="perfil">
-                <span>Usuario Pro</span>
-            </div>
-        </aside>
-    )
+      <div className="perfil">
+        <span>Explorador</span>
+      </div>
+    </aside>
+  );
 } 
+
 export default Sidebar;
