@@ -199,3 +199,79 @@
   transform: translateY(0);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+
+/* ==========================================
+   📱 ADAPTACIÓN PARA MÓVILES (RESPONSIVE)
+   ========================================== */
+
+@media (max-width: 768px) {
+  /* Cambiamos la distribución de lado a lado (row) a vertical (column) */
+  .app-container {
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  /* La barra lateral ahora se adapta a la parte superior */
+  .sidebar {
+    width: 100%;
+    height: auto;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border-right: none;
+    border-bottom: 2px solid var(--oro-egipcio);
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  /* Compactamos el logo en móviles */
+  .logo-area h2 {
+    font-size: 1.2rem;
+    margin: 0;
+  }
+
+  /* Ocultamos elementos secundarios en móvil para ganar espacio de lectura */
+  .menu-lateral, .perfil {
+    display: none;
+  }
+
+  /* Zona de chat ocupa todo el espacio restante */
+  .chat-area {
+    flex: 1;
+    height: calc(100vh - 60px); /* Resta el espacio que ocupa la barra superior */
+  }
+
+  .mensajes-container {
+    padding: 15px;
+    gap: 15px;
+  }
+
+  /* Las burbujas de texto se ensanchan para aprovechar la pantalla pequeña */
+  .msg-usuario, .msg-ia {
+    max-width: 85%;
+    padding: 12px;
+    font-size: 0.95rem;
+  }
+
+  /* Área inferior de escritura */
+  .input-area {
+    padding: 12px;
+    background-color: var(--fondo-papiro); /* Evita transparencias raras al hacer scroll */
+    border-top: 1px solid var(--arena-oscura);
+  }
+
+  .chat-form {
+    gap: 8px;
+  }
+
+  #mensaje-input {
+    padding: 12px;
+    font-size: 0.95rem;
+  }
+
+  .chat-form button {
+    padding: 0 18px;
+    font-size: 0.9rem;
+  }
+}
