@@ -275,3 +275,111 @@
     font-size: 0.9rem;
   }
 }
+
+
+/* añadido para voz */
+/* 🎤 Estilos para el botón de voz activo */
+.boton-voz {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--arena-oscura);
+}
+
+.boton-voz:hover {
+  background-color: var(--oro-egipcio);
+  transform: scale(1.1);
+}
+
+.boton-voz.activo {
+  background-color: #ef4444;
+  color: white;
+  animation: pulsar 1.5s infinite;
+  box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7);
+}
+
+@keyframes pulsar {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7);
+  }
+  70% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 10px rgba(239, 68, 68, 0);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0);
+  }
+}
+
+/* Estilo para el input cuando está escuchando */
+#mensaje-input.escuchando-activo {
+  border-color: #ef4444;
+  background-color: #fff5f5;
+  box-shadow: 0 0 8px rgba(239, 68, 68, 0.3);
+}
+
+/* Ajuste responsive para el botón de voz */
+@media (max-width: 768px) {
+  .boton-voz {
+    font-size: 1.2rem;
+    padding: 8px 12px;
+  }
+  
+  .chat-form button {
+    padding: 0 15px;
+  }
+}
+
+
+/*  añadido para que el arqueologo conteste por voz*/
+/* ==========================================
+   🆕 ESTILOS ADICIONALES PARA VOZ DE SALIDA
+   ========================================== */
+
+/* Botón para activar/desactivar voz del Egiptólogo */
+.boton-voz-salida {
+  background: none;
+  border: none;
+  font-size: 1.3rem;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--arena-oscura);
+}
+
+.boton-voz-salida:hover {
+  background-color: var(--oro-egipcio);
+  transform: scale(1.1);
+}
+
+.boton-voz-salida.activo {
+  background-color: #3b82f6;
+  color: white;
+  animation: vibrar 0.5s ease;
+}
+
+@keyframes vibrar {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+/* Ajuste responsive */
+@media (max-width: 768px) {
+  .boton-voz-salida {
+    font-size: 1.1rem;
+    padding: 8px 12px;
+  }
+}
